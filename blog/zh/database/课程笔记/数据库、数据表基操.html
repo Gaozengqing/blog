@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="中文">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>数据库、数据表基操 | 随笔记</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="记录学习点滴">
+    
+    <link rel="preload" href="/assets/css/0.styles.86229549.css" as="style"><link rel="preload" href="/assets/js/app.a84a5bc4.js" as="script"><link rel="preload" href="/assets/js/2.cf7b150b.js" as="script"><link rel="preload" href="/assets/js/1.e8a8831c.js" as="script"><link rel="preload" href="/assets/js/50.f6a5e2e3.js" as="script"><link rel="preload" href="/assets/js/19.5d8b9af5.js" as="script"><link rel="prefetch" href="/assets/js/10.5bfd5340.js"><link rel="prefetch" href="/assets/js/11.61983d84.js"><link rel="prefetch" href="/assets/js/12.05c2fbb5.js"><link rel="prefetch" href="/assets/js/13.055f7ef0.js"><link rel="prefetch" href="/assets/js/14.b5308c17.js"><link rel="prefetch" href="/assets/js/15.5fd21bc7.js"><link rel="prefetch" href="/assets/js/16.6f53edfd.js"><link rel="prefetch" href="/assets/js/17.7d777ab5.js"><link rel="prefetch" href="/assets/js/18.e676ab4a.js"><link rel="prefetch" href="/assets/js/20.cdcc4be3.js"><link rel="prefetch" href="/assets/js/21.69333edc.js"><link rel="prefetch" href="/assets/js/22.289b20fc.js"><link rel="prefetch" href="/assets/js/23.af2243ab.js"><link rel="prefetch" href="/assets/js/24.588f552f.js"><link rel="prefetch" href="/assets/js/25.4522f3a7.js"><link rel="prefetch" href="/assets/js/26.6cdbb216.js"><link rel="prefetch" href="/assets/js/27.d2137ba1.js"><link rel="prefetch" href="/assets/js/28.da06b5d1.js"><link rel="prefetch" href="/assets/js/29.e4202f72.js"><link rel="prefetch" href="/assets/js/3.1bda5a3b.js"><link rel="prefetch" href="/assets/js/30.16ce7af7.js"><link rel="prefetch" href="/assets/js/31.0886b7ee.js"><link rel="prefetch" href="/assets/js/32.ac7ef8ec.js"><link rel="prefetch" href="/assets/js/33.e9201557.js"><link rel="prefetch" href="/assets/js/34.57dc5ba5.js"><link rel="prefetch" href="/assets/js/35.d8a2cb5d.js"><link rel="prefetch" href="/assets/js/36.1c982d8a.js"><link rel="prefetch" href="/assets/js/37.cf4359ce.js"><link rel="prefetch" href="/assets/js/38.8631c89b.js"><link rel="prefetch" href="/assets/js/39.d7679381.js"><link rel="prefetch" href="/assets/js/4.9e01a26f.js"><link rel="prefetch" href="/assets/js/40.4b310e42.js"><link rel="prefetch" href="/assets/js/41.a5fbdafd.js"><link rel="prefetch" href="/assets/js/42.f6b5d4df.js"><link rel="prefetch" href="/assets/js/43.222df8b3.js"><link rel="prefetch" href="/assets/js/44.9b46d5ac.js"><link rel="prefetch" href="/assets/js/45.fcefdf0b.js"><link rel="prefetch" href="/assets/js/46.28e7b3cb.js"><link rel="prefetch" href="/assets/js/47.efcb8fb7.js"><link rel="prefetch" href="/assets/js/48.580164b2.js"><link rel="prefetch" href="/assets/js/49.a24614cf.js"><link rel="prefetch" href="/assets/js/5.24725efe.js"><link rel="prefetch" href="/assets/js/51.a4056af7.js"><link rel="prefetch" href="/assets/js/52.ce027b31.js"><link rel="prefetch" href="/assets/js/53.a1e62627.js"><link rel="prefetch" href="/assets/js/54.e4bf60bb.js"><link rel="prefetch" href="/assets/js/55.d25a581b.js"><link rel="prefetch" href="/assets/js/56.99dff7de.js"><link rel="prefetch" href="/assets/js/57.3a7e915a.js"><link rel="prefetch" href="/assets/js/58.d3d6fbc9.js"><link rel="prefetch" href="/assets/js/59.8ff818f2.js"><link rel="prefetch" href="/assets/js/6.67c595f8.js"><link rel="prefetch" href="/assets/js/60.6c71888b.js"><link rel="prefetch" href="/assets/js/61.30b321ca.js"><link rel="prefetch" href="/assets/js/7.3f39289d.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.4dff5a50.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.86229549.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><img src="/note.png" alt="随笔记" class="logo"> <span class="site-name can-hide">随笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/front/base/HTML/frist.html" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/zh/front/base/CSS/frist.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/zh/front/base/Javascript/frist.html" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/back/数据处理/frist.html" class="nav-link">
+  数据处理
+</a></li><li class="dropdown-item"><!----> <a href="/zh/back/JAVA/frist.html" class="nav-link">
+  JAVA
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/入门.html" class="nav-link">
+  入门
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/数据库、数据表基操.html" class="nav-link">
+  数据库、数据表基操
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/数据操作.html" class="nav-link">
+  数据操作
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/多表操作.html" class="nav-link">
+  多表操作
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/事务.html" class="nav-link">
+  事务
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/视图.html" class="nav-link">
+  视图
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/索引.html" class="nav-link">
+  索引
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/tools/" class="nav-link">
+  工具
+</a></div><div class="nav-item"><a href="/zh/study/" class="nav-link">
+  学习
+</a></div><div class="nav-item"><a href="/zh/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  英语
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/数据库、数据表基操.html" class="nav-link">
+  中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端" class="mobile-dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/front/base/HTML/frist.html" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/zh/front/base/CSS/frist.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/zh/front/base/Javascript/frist.html" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/back/数据处理/frist.html" class="nav-link">
+  数据处理
+</a></li><li class="dropdown-item"><!----> <a href="/zh/back/JAVA/frist.html" class="nav-link">
+  JAVA
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/入门.html" class="nav-link">
+  入门
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/数据库、数据表基操.html" class="nav-link">
+  数据库、数据表基操
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/数据操作.html" class="nav-link">
+  数据操作
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/多表操作.html" class="nav-link">
+  多表操作
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/事务.html" class="nav-link">
+  事务
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/视图.html" class="nav-link">
+  视图
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/索引.html" class="nav-link">
+  索引
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/tools/" class="nav-link">
+  工具
+</a></div><div class="nav-item"><a href="/zh/study/" class="nav-link">
+  学习
+</a></div><div class="nav-item"><a href="/zh/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  英语
+</a></li><li class="dropdown-item"><!----> <a href="/zh/database/课程笔记/数据库、数据表基操.html" class="nav-link">
+  中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>前端</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/front/base.html" class="sidebar-link">导言</a></li><li><section class="sidebar-group is-sub-group depth-1"><p class="sidebar-heading"><span>HTML</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/front/base/HTML/frist.html" class="sidebar-link">HTML1</a></li><li><a href="/front/base/HTML/second.html" class="sidebar-link">HTML2</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>CSS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Javascript</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>后端</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="数据库、数据表基操"><a href="#数据库、数据表基操" class="header-anchor">#</a> 数据库、数据表基操</h1> <h2 id="创建与查看"><a href="#创建与查看" class="header-anchor">#</a> 创建与查看</h2> <p>SQL根据功能分为了</p> <ol><li>DQL 数据查询语言</li> <li>DML 数据操作语言</li> <li>DDL 数据定义语言</li> <li>DCL 数据控制语言</li></ol> <p>1、select和insert
+2、update和delete
+3、create和alter和drop   创建、修改、删除
+4、grant和commit和rollback 用户授权、提交事务、回滚事务</p> <h3 id="tip"><a href="#tip" class="header-anchor">#</a> Tip:</h3> <hr> <p>在Windows平台下，数据库名、数据表名和字段名都不区分大小写。
+在Linux平台下，数据库名和数据表名严格区分大小写，字段名不区分大小写。
+关键字不区分大小写，习惯上使用大写，用户自定义的名称习惯上使用小写。
+SQL语句可以在单行或多行中书写，以分号结束即可。
+关键字不能直接作为用户自定义名称使用，如果要使用可以通过反引号包裹，如</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token identifier"><span class="token punctuation">`</span>select<span class="token punctuation">`</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>[]：表示可选项,里面的参数可有可无
+{}中使用“|” ：表示选择项，在选择项中仅需选择其中一项</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment">-- 单行注释</span>
+<span class="token comment"># 单行注释</span>
+<span class="token comment">/*
+  多行注释
+*/</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>字符编码：计算机采用二进制方式保存数据，用户输入的字符会按照一定的规则转换为二进制后保存。
+校对集：用于为不同字符集指定比较和排序规则，在进行比较和排序等操作时都会用到校对集。
+例如，utf8mb4字符集默认的校对集为utf8mb4_0900_ai_ci。</p> <p>常用的字符编码是：utf8中的单个字符最多占用3个字节，utf8mb4中的单个字符允许占用4个字节，如果要在数据库中使用emoji表情，需要选择utf8mb4字符集。</p> <hr> <h3 id="创建"><a href="#创建" class="header-anchor">#</a> 创建</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> {<span class="token keyword">DATABASE</span><span class="token operator">|</span><span class="token keyword">SCHEMA</span>} <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> 数据库名称 
+<span class="token punctuation">[</span><span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token keyword">COLLATE</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- CREATE {DATABASE|SCHEMA}：表示创建数据库，DATABASE和SCHEMA都表示数据库。</span>
+<span class="token comment">-- IF NOT EXISTS：可选项，创建数据库前判断要创建的数据库的名称是否已经存在。</span>
+<span class="token comment">-- DEFAULT CHARSET：可选项，指定数据库字符集，如果省略使用默认字符集。</span>
+<span class="token comment">-- COLLATE：可选项，指定校对集，省略使用字符集对应的默认校对集。</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="查看"><a href="#查看" class="header-anchor">#</a> 查看</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment">-- 查看所有数据库的基本语法：</span>
+<span class="token keyword">SHOW</span> {<span class="token keyword">DATABASES</span><span class="token operator">|</span>SCHEMAS} <span class="token punctuation">[</span><span class="token operator">LIKE</span> <span class="token string">'pattern'</span><span class="token operator">|</span><span class="token keyword">WHERE</span> expr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">-- SHOW {DATABASES|SCHEMAS}：使用SHOW DATABASES或SHOW SCHEMAS查看已存在的数据库。</span>
+<span class="token comment">-- LIKE ‘pattern’：可选项，根据指定的匹配模式匹配数据库，通过“%”和“_”指定匹配模式，%表示匹配一个或多个字符；_表示匹配一个字符。</span>
+<span class="token comment">-- WHERE expr：可选项，根据指定条件匹配数据库。</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="tip-2"><a href="#tip-2" class="header-anchor">#</a> Tip</h3> <hr> <p>MySQL自动创建的4个数据库的作用：
+<strong>information_schema</strong>  主要存储数据库和数据表的结构信息，如用户表信息、字段信息、字符集信息。
+<strong>mysql</strong>  主要存储MySQL自身需要使用的控制和管理信息，如用户的权限。
+<strong>performance_schema</strong>  用于存储系统性能相关的动态参数，如全局变量。
+<strong>sys</strong>  系统数据库，包括了存储过程、自定义函数等信息。</p> <hr> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment">-- school只是实例</span>
+<span class="token comment">-- 查看指定数据库的创建信息基本语法：</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> {<span class="token keyword">DATABASE</span><span class="token operator">|</span><span class="token keyword">SCHEMA</span>} 数据库名称<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>标准的一条建库语句</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">create</span> <span class="token keyword">database</span> school <span class="token keyword">character</span> <span class="token keyword">set</span> utf8mb4 <span class="token keyword">collate</span> utf8mb4_general_ci<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment">-- 查看建库语句。school只是实例</span>
+<span class="token keyword">show</span> <span class="token keyword">create</span> <span class="token keyword">database</span> school
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="tip-3"><a href="#tip-3" class="header-anchor">#</a> Tip</h3> <hr> <p>数据类型：</p> <ol><li>整数
+tinyint,smallint,mediumint,int,bigint</li> <li>浮点数
+用于保存小数。
+float(4字节),double(8字节)</li> <li>定点数
+用于保存<strong>确切精度</strong>的小数。
+decimal,numberic</li> <li>字符串类型
+char,varchar,tinyblob,blob,mediumblob
+longblob,tinytext,text,mediumtext,longtext</li> <li>日期和时间
+year,date,time,datetime,timestamp</li></ol> <p><strong>浮点数类型的精度不高</strong>，浮点数类型适合将小数作为近似值存储而不是作为精确值存储。
+<strong>FLOAT</strong>类型的数字，<strong>整数和小数超过6位</strong>就有可能损失精度。
+<strong>DOUBLE</strong>类型的数字，<strong>整数和小数超过15位</strong>就有可能损失精度。
+数学计算时浮点数也可能会损失精度。</p> <p><strong>DECIMAL(M,D)</strong>
+M：整数部分加小数部分的总长度，取值范围0~65，默认值10，超出范围会报错；
+D：小数部分位数，取值范围0~30，默认值0，且必须满足D&lt;=M。</p> <p><strong>varchar</strong>变长，<strong>char</strong>固定长度</p> <p><strong>blob</strong>常用来存储图片、pdf文档等二进制数据</p> <p><strong>MySQL中数据表的单行长度限制为65 535字节。</strong>
+单行长度限制是指一条记录中<strong>除BLOB系列和TEXT系列外</strong>的其他常见数据类型的字段加起来不能超过限制。
+<strong>BLOB系列和TEXT系列的字段不受单行长度限制</strong>，只会占用单行的9~12字节的存储空间。</p> <p>使用<strong>YEAR</strong>类型时，一定要区分字符**'0'<strong>和数字</strong>0**。
+前者代表<strong>2000年</strong>，后者代表<strong>0000年</strong></p> <p>TIMESTAMP类型与DATATIME类型的区别：
+TIMESTAMP类型的取值范围比DATATIME类型小。
+TIMESTAMP类型的值和时区有关，两个不同时区取出来的同一个日期和时间的显示结果可能不同。
+如插入日期和时间时，系统会根据当前系统所设置的时区，对日期和时间进行转换后存放；
+从获取日期和时间时，会将数据转换为对应时区时间后显示。</p> <hr> <h3 id="选择数据库"><a href="#选择数据库" class="header-anchor">#</a> 选择数据库</h3> <p>USE 数据库名称;</p> <h3 id="建表语句"><a href="#建表语句" class="header-anchor">#</a> 建表语句</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token keyword">TEMPORARY</span><span class="token punctuation">]</span> <span class="token keyword">TABLE</span> <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> 表名 <span class="token punctuation">(</span>
+字段名 数据类型 <span class="token punctuation">[</span>字段属性<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span> <span class="token punctuation">[</span>表选项<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- TEMPORARY：可选项，表示临时表，临时表仅在当前会话可见，会话结束后自动删除。</span>
+<span class="token comment">-- IF NOT EXISTS：可选项，只有在创建的数据表不存在时，才会创建数据表。</span>
+<span class="token comment">-- 表名：数据表的名称。</span>
+<span class="token comment">-- 字段名：字段的名称。</span>
+<span class="token comment">-- 数据类型：字段的数据类型。</span>
+<span class="token comment">-- 字段属性：可选项，设置COMMENT属性给字段添加备注；设置约束属性保证数据的完整性和有效性。</span>
+<span class="token comment">-- 表选项：可选项，设置数据表的相关选项，如存储引擎、字符集、校对集等。</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="查看所有的存储引擎"><a href="#查看所有的存储引擎" class="header-anchor">#</a> 查看所有的存储引擎</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">show</span> engines<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="查看数据表"><a href="#查看数据表" class="header-anchor">#</a> 查看数据表</h3> <p>通过SHOW TABLES语句查看当前数据库中的数据表。</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">SHOW</span> <span class="token keyword">TABLES</span> <span class="token punctuation">[</span><span class="token operator">LIKE</span> <span class="token string">'pattern'</span><span class="token operator">|</span><span class="token keyword">WHERE</span> expr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- LIKE子句和WHERE子句为可选项。</span>
+<span class="token comment">-- 如果不添加可选项，表示查看当前数据库中所有的数据表。</span>
+<span class="token comment">-- 如果添加可选项，则按照LIKE子句的匹配结果或者WHERE子句的匹配结果查看数据表。</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="查看建表语句"><a href="#查看建表语句" class="header-anchor">#</a> 查看建表语句</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> 表名<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="使用desc语句查看数据表结构"><a href="#使用desc语句查看数据表结构" class="header-anchor">#</a> 使用DESC语句查看数据表结构</h3> <p>DESC 表名;</p> <p>DESC语句返回的信息：
+Field：数据表中字段的名称，即列的名称。
+Type：数据表中字段对应的数据类型。
+Null：该字段是否可以存储NULL值。
+Key：该字段是否已经建立索引。
+Default：该字段是否有默认值。
+Extra：字段相关的附加信息。</p> <h2 id="修改和删除"><a href="#修改和删除" class="header-anchor">#</a> 修改和删除</h2> <h3 id="修改数据库"><a href="#修改数据库" class="header-anchor">#</a> 修改数据库</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">ALTER</span> {<span class="token keyword">DATABASE</span><span class="token operator">|</span><span class="token keyword">SCHEMA</span>} <span class="token punctuation">[</span>数据库名称<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">COLLATE</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>ENCRYPTION<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">READ</span> ONLY<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">ALTER</span> {<span class="token keyword">DATABASE</span><span class="token operator">|</span><span class="token keyword">SCHEMA</span>}  
+修改指定名称的数据库
+
+数据库名称  
+可选项，表示要修改哪个数据库
+
+<span class="token keyword">DEFAULT</span> 
+<span class="token keyword">CHARSET</span>  可选项，用于指定默认的数据库字符集
+
+<span class="token keyword">COLLATE</span>  
+可选项，用于指定校对集
+
+ENCRYPTION  
+可选项，用于为数据库加密
+
+<span class="token keyword">READ</span> ONLY
+用于控制是否允许修改数据库及其中的数据
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h3 id="删除数据库"><a href="#删除数据库" class="header-anchor">#</a> 删除数据库</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">DROP</span> {<span class="token keyword">DATABASE</span><span class="token operator">|</span><span class="token keyword">SCHEMA</span>} <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> 数据库名称<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="修改数据表名称"><a href="#修改数据表名称" class="header-anchor">#</a> 修改数据表名称</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code>ALERT <span class="token keyword">TABLE</span> 旧表名 <span class="token keyword">RENAME</span> <span class="token punctuation">[</span><span class="token keyword">TO</span><span class="token operator">|</span><span class="token keyword">AS</span><span class="token punctuation">]</span> 新表名<span class="token punctuation">;</span>
+<span class="token operator">or</span>
+<span class="token keyword">RENAME</span> <span class="token keyword">TABLE</span> 旧表名<span class="token number">1</span> <span class="token keyword">TO</span> 新表名<span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">,</span> 旧表名<span class="token number">2</span> <span class="token keyword">TO</span> 新表名<span class="token number">2</span><span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="修改数据表字段名称"><a href="#修改数据表字段名称" class="header-anchor">#</a> 修改数据表字段名称</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 旧字段名 新字段名 数据类型<span class="token punctuation">[</span>字段属性<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">-- 旧字段名：修改前的字段名。</span>
+<span class="token comment">-- 新字段名：修改后的字段名。</span>
+<span class="token comment">-- 数据类型：修改后字段的数据类型，不能为空，即使新字段的数据类型与旧字段的数据类型相同，也必须设置。</span>
+<span class="token operator">or</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">RENAME</span> <span class="token keyword">COLUMN</span> 旧字段名 <span class="token keyword">TO</span> 新字段名<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="修改数据表中字段的数据类型"><a href="#修改数据表中字段的数据类型" class="header-anchor">#</a> 修改数据表中字段的数据类型</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 字段名 新数据类型<span class="token punctuation">[</span>字段属性<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token operator">or</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 字段名 新数据类型<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="为数据表添加指定字段"><a href="#为数据表添加指定字段" class="header-anchor">#</a> 为数据表添加指定字段</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment">-- 添加一个字段</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">ADD</span> <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 新字段名 数据类型 <span class="token punctuation">[</span><span class="token keyword">FIRST</span><span class="token operator">|</span><span class="token keyword">AFTER</span> 字段名<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">-- 添加多个字段</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">ADD</span> <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>新字段名<span class="token number">1</span> 数据类型<span class="token number">1</span><span class="token punctuation">,</span> 新字段名<span class="token number">2</span> 数据类型<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">-- FIRST参数：将数据表中新字段名添加为数据表的第一个字段。</span>
+<span class="token comment">-- AFTER参数：将新字段添加到指定字段的后面。</span>
+<span class="token comment">-- 若不指定字段添加位置，新字段默认添加到数据表的最后。</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="修改数据表中字段的排列位置"><a href="#修改数据表中字段的排列位置" class="header-anchor">#</a> 修改数据表中字段的排列位置</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 语法1，将某个字段修改为表的第一个字段</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> 字段名 数据类型 <span class="token keyword">FIRST</span><span class="token punctuation">;</span>
+<span class="token comment"># 语法2，将字段名1移动到字段名2的后面</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> 字段名<span class="token number">1</span> 数据类型 <span class="token keyword">AFTER</span> 字段名<span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token operator">or</span>
+<span class="token comment"># 语法1，将某个字段修改为表的第一个字段</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE 字段名 字段名 数据类型 <span class="token keyword">FIRST</span><span class="token punctuation">;</span>
+<span class="token comment"># 语法2，将字段名1移动到字段名2的后面</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE 字段名<span class="token number">1</span> 字段名<span class="token number">1</span> 数据类型 <span class="token keyword">AFTER</span> 字段名<span class="token number">2</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="删除数据表中的指定字段"><a href="#删除数据表中的指定字段" class="header-anchor">#</a> 删除数据表中的指定字段</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">DROP</span> <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 字段名<span class="token number">1</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token keyword">DROP</span> 字段名<span class="token number">2</span><span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="删除数据表"><a href="#删除数据表" class="header-anchor">#</a> 删除数据表</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">DROP</span> <span class="token punctuation">[</span><span class="token keyword">TEMPORARY</span><span class="token punctuation">]</span> <span class="token keyword">TABLE</span> <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> 表名<span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">,</span> 表名<span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+<span class="token comment">-- TEMPORARY：可选项，表示删除临时表。</span>
+<span class="token comment">-- IF EXISTS：可选项，表示在删除之前判断数据表是否存在。</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="数据库的约束"><a href="#数据库的约束" class="header-anchor">#</a> 数据库的约束</h2> <h3 id="非空约束"><a href="#非空约束" class="header-anchor">#</a> 非空约束</h3> <p>非空约束用于<strong>确保插入到字段中值的非空性</strong>。
+字段设置非空约束后，该字段存放的值必须是<strong>NULL值之外的其他的具体值</strong>。
+非空约束通过<strong>NOT NULL来实现</strong>，在数据表中可以<strong>为多个字段同时设置非空约束</strong>。
+非空约束可以在<strong>创建数据表</strong>时设置，也可以在<strong>修改数据表</strong>时设置。</p> <p><strong>创建</strong>数据表时设置</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> 表名 <span class="token punctuation">(</span>
+字段名 数据类型 <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><strong>修改</strong>数据表时设置</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 语法1，MODIFY子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> 字段名 数据类型 <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">;</span>
+<span class="token comment"># 语法2，CHANGE子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 字段名 字段名 数据类型 <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><strong>删除</strong>非空约束
+通过ALTER TABLE语句中的MODIFY子句或CHANGE子句以<strong>重新定义字段的方式删除非空约束：</strong></p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 语法1，MODIFY子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> 字段名 数据类型<span class="token punctuation">;</span>
+<span class="token comment"># 语法2，CHANGE子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 字段名 字段名 数据类型<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="唯一约束"><a href="#唯一约束" class="header-anchor">#</a> 唯一约束</h3> <p>唯一约束用于确保字段中值的唯一性，设置唯一约束后，该字段中存放的值不能重复出现。
+唯一约束通过UNIQUE关键字设置，可以在数据表中设置一个或者多个唯一约束。
+唯一约束可以在创建数据表时设置，也可以在修改数据表时设置。</p> <h3 id="tip-4"><a href="#tip-4" class="header-anchor">#</a> Tip</h3> <hr> <p>创建数据表时设置唯一约束的方式有两种，分别是<strong>列级</strong>约束和<strong>表级</strong>约束。
+列级约束和表级约束的区别：
+<strong>列级</strong>约束定义在列中，紧跟在字段的数据类型之后，<strong>只对该字段起约束作用</strong>。
+<strong>表级</strong>约束独立于字段，可以<strong>对数据表的单个或多个字段起约束作用</strong>。
+当表级唯一约束建立在多个字段上时，会通过多个字段确保唯一性，只要多个字段中有一个字段不同，那么结果就是唯一的。
+当表级唯一约束仅建立在一个字段上时，其效果与列级约束相同。</p> <hr> <p><strong>创建</strong>数据表时设置
+列级</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> 表名 <span class="token punctuation">(</span>
+    字段名<span class="token number">1</span> 数据类型 <span class="token keyword">UNIQUE</span><span class="token punctuation">,</span>
+    字段名<span class="token number">2</span> 数据类型 <span class="token keyword">UNIQUE</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>表级</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> 表名<span class="token punctuation">(</span>
+ 字段名<span class="token number">1</span> 数据类型<span class="token punctuation">,</span>
+ 字段名<span class="token number">2</span> 数据类型<span class="token punctuation">,</span>
+ 字段名<span class="token number">3</span> 数据类型<span class="token punctuation">,</span>
+ <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+ <span class="token keyword">UNIQUE</span> <span class="token punctuation">(</span>字段名<span class="token number">1</span><span class="token punctuation">,</span> 字段名<span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="tip-5"><a href="#tip-5" class="header-anchor">#</a> Tip</h3> <hr> <p>给字段设置唯一约束后，MySQL会自动给对应的字段添加唯一索引，使用DESC语句查看表结构时，如果字段的Key列值为UNI，表示给字段添加了唯一约束。</p> <hr> <p><strong>修改</strong>数据表时设置</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 语法1，MODIFY子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> 字段名 数据类型 <span class="token keyword">UNIQUE</span><span class="token punctuation">;</span>
+<span class="token comment"># 语法2，CHANGE子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 字段名 字段名 数据类型 <span class="token keyword">UNIQUE</span><span class="token punctuation">;</span>
+<span class="token comment"># 语法3，ADD子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">ADD</span> <span class="token keyword">UNIQUE</span> <span class="token punctuation">(</span>字段<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="删除唯一约束"><a href="#删除唯一约束" class="header-anchor">#</a> 删除唯一约束</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">DROP</span> <span class="token keyword">index</span> 字段名<span class="token punctuation">;</span>
+字段名是指该表中设置了唯一约束的字段
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="主键约束"><a href="#主键约束" class="header-anchor">#</a> 主键约束</h3> <p>主键约束用于将一个或多个字段设置为表的主键。
+主键约束相当于非空约束和唯一约束的组合，被约束字段不能出现重复值，也不能出现NULL值。
+主键约束通过PRIMARY KEY关键字设置，每个数据表中只能设置一个主键约束。
+主键约束可以在创建数据表时设置，也可以在修改数据表时设置。</p> <p>创建数据表时可以设置列级或者表级的主键约束，列级主键约束只能对单字段设置。
+表级主键约束是指对单字段或者多字段设置，为多字段设置主键约束时，会形成复合主键。</p> <p><strong>创建</strong>数据表时设置
+列级</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> 表名 <span class="token punctuation">(</span>
+   字段名 数据类型 <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
+   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>表级</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> 表名 <span class="token punctuation">(</span>
+   字段名<span class="token number">1</span> 数据类型<span class="token punctuation">,</span>
+   字段名<span class="token number">2</span> 数据类型<span class="token punctuation">,</span>
+   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+   <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>字段名<span class="token number">1</span><span class="token punctuation">,</span> 字段名<span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p><strong>修改</strong>数据表时设置</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 语法1，MODIFY子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> 字段名 数据类型 <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">;</span>
+<span class="token comment"># 语法2，CHANGE子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 字段名 字段名 数据类型 <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">;</span>
+<span class="token comment"># 语法3，ADD子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">ADD</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>字段<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="删除主键约束"><a href="#删除主键约束" class="header-anchor">#</a> 删除主键约束</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">DROP</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="设置字段自动增长"><a href="#设置字段自动增长" class="header-anchor">#</a> 设置字段自动增长</h3> <p><strong>创建</strong>数据表时设置</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> 表名 <span class="token punctuation">(</span>
+   字段名 数据类型 约束 <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p><strong>修改</strong>数据表时设置</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 语法1，MODIFY子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> 字段名 数据类型 <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">;</span>
+<span class="token comment"># 语法2，CHANGE子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE 字段名 字段名 数据类型 <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="tip-6"><a href="#tip-6" class="header-anchor">#</a> Tip</h3> <hr> <p>使用AUTO_INCREMENT的注意事项：
+一个数据表中只能有一个字段设置AUTO_INCREMENT，设置AUTO_INCREMENT字段的数据类型应该是整数类型，且该字段必须设置了唯一约束或主键约束。
+如果为自动增长字段插入NULL值，或在插入数据时省略了自动增长字段，则该字段会使用自动增长值；如果插入的是一个具体的值，则不会自动增长值。
+默认情况下，设置AUTO_INCREMENT字段的值从1开始自增。如果插入了一个大于自动增长值的具体值，则下次自动增长的值为字段中的最大值加1。
+使用DELETE删除数据时，自动增长值不会减少或者填补空缺。</p> <hr> <h3 id="设置默认值约束"><a href="#设置默认值约束" class="header-anchor">#</a> 设置默认值约束</h3> <p>默认值约束用于给数据表中的字段指定默认值，向数据表中插入新记录时，如果没有给这个字段赋值，数据库系统会自动为这个字段插入指定的默认值。
+默认值约束通过DEFAULT关键字设置。
+默认值约束可以在创建数据表时设置，也可以在修改数据表时设置。
+<strong>创建</strong>数据表时设置</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> 表名<span class="token punctuation">(</span>
+   字段名 数据类型 <span class="token keyword">DEFAULT</span> 默认值<span class="token punctuation">,</span>
+   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><strong>修改</strong>数据表时设置</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 语法1，MODIFY子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> 字段名 数据类型 <span class="token keyword">DEFAULT</span> 默认值<span class="token punctuation">;</span>
+<span class="token comment"># 语法2，CHANGE子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 CHANGE <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 字段名 字段名 数据类型 <span class="token keyword">DEFAULT</span> 默认值<span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="删除默认值约束"><a href="#删除默认值约束" class="header-anchor">#</a> 删除默认值约束</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 语法1，MODIFY子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span>表名 <span class="token keyword">MODIFY</span> 字段名 数据类型<span class="token punctuation">;</span>
+<span class="token comment"># 语法2，CHANGE子句</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span>表名 CHANGE <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> 字段名 字段名 数据类型<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.a84a5bc4.js" defer></script><script src="/assets/js/2.cf7b150b.js" defer></script><script src="/assets/js/1.e8a8831c.js" defer></script><script src="/assets/js/50.f6a5e2e3.js" defer></script><script src="/assets/js/19.5d8b9af5.js" defer></script>
+  </body>
+</html>
